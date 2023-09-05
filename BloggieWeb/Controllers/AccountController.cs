@@ -57,22 +57,20 @@ namespace BloggieWeb.Controllers
             var model = new LoginViewModel
             {
                 ReturnUrl = ReturnUrl
-            }; 
+            };
             return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
-
             if (!ModelState.IsValid)
             {
                 return View();
             }
             var singInResult = await signInManager.PasswordSignInAsync(loginViewModel.Username, loginViewModel.Password, false, false);
 
-
-            if (singInResult != null && singInResult.Succeeded) 
+            if (singInResult != null && singInResult.Succeeded)
             {
                 if (string.IsNullOrWhiteSpace(loginViewModel.ReturnUrl))
                 {
