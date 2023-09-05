@@ -72,7 +72,7 @@ namespace BloggieWeb.Controllers
 
             if (singInResult != null && singInResult.Succeeded)
             {
-                if (string.IsNullOrWhiteSpace(loginViewModel.ReturnUrl))
+                if (!string.IsNullOrWhiteSpace(loginViewModel.ReturnUrl))
                 {
                     return Redirect(loginViewModel.ReturnUrl);
                 }
